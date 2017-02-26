@@ -1,0 +1,59 @@
+<html>
+<head>
+	<title>D3 First Program</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>		
+	<script src="https://d3js.org/d3.v3.min.js"></script>
+	<script type="text/javascript">
+		var data = [5, 4, 12, 83, 9, 2, 42];
+
+		function sort(array) {
+			var swapped = false;
+			for(var i = 0; i < array.length - 1; i ++) {
+				if(data[i] > data[i+1]) {
+					var temp = data[i];
+					data[i] = data[i+1];
+					data[i+1] = temp;
+					swapped = true;
+				}
+			}
+			if(swapped) {
+				sort(array);
+			}
+		}
+
+		sort(data);
+
+		$(document).ready(function() {
+			d3.select("#myGraph")
+				.selectAll("div")
+				.data(data)
+				.enter().append("div")
+					.attr("class", "barElement")
+					.text(function(d) {return d;})
+					.style("width", function(d) {return 10*d + "px";})
+		})
+	</script>
+	<style type="text/css">
+		.barElement {
+			padding: 6px;
+			border-style: solid;
+			margin: 3px;
+			/*width: 40px;*/
+			background-color:yellow;
+
+		}
+		.barElement:hover {
+			background-color: red;
+		}
+		#myGraph {
+			padding: 2px;
+			border-style: solid;
+			border-color: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="myGraph"></div>
+
+</body>
+</html>

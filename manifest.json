@@ -1,0 +1,18 @@
+{
+	"manifest_version": 2,
+	"name": "Youtube Manager",
+	"description": "Youtube Extension",
+	"version" :"1.0",
+
+	"browser_action": {
+		"default_icon": "icon.png",
+		"default_popup": "menu.html",
+		"default_title": "Youtube Manager!"
+	},
+	"permissions": [
+		"activeTab",
+		"tabs",
+		"https://ajax.googleapis.com/",
+		"identity"
+	]
+}
